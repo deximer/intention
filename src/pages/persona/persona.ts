@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the PersonaPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Persona } from '../../models/item';
+import { Personas } from '../../providers';
 
 @IonicPage()
 @Component({
@@ -14,8 +10,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'persona.html',
 })
 export class PersonaPage {
+  currentItems: Persona[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public personas: Personas, public navParams: NavParams) {
+    this.currentItems = this.personas.query();
   }
 
   ionViewDidLoad() {
